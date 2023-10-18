@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "_client/*": ["client/*"],
+      "_components/*": ["client/components/*"],
+      "_store/*": ["client/store/*"],
+      "_styles/*": ["client/styles/*"],
+      "_hooks/*": ["client/hooks/*"],
+      "_utils/*": ["client/utils/*"],
+      "_types/*": ["client/types/*"]
+    }
+  },
+  "include": ["client", "config", ".eslintrc.js"]
+}

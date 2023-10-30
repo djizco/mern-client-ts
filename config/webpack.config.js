@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 
-const resolve = dir => path.join(__dirname, '../', dir);
+const resolve = (dir) => path.join(__dirname, '../', dir);
 
 const env = process.env.NODE_ENV || 'development';
 const apiURL = process.env.API_URL || '';

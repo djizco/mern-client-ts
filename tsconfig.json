@@ -17,6 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "_client/*": ["client/*"],
+      "_api/*": ["client/api/*"],
       "_components/*": ["client/components/*"],
       "_store/*": ["client/store/*"],
       "_styles/*": ["client/styles/*"],

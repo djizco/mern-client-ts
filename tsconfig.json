@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -8,12 +11,9 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
     "noImplicitAny": true,
     "resolveJsonModule": true,
     "noEmit": true,
-    "jsx": "react",
     "baseUrl": ".",
     "paths": {
       "_client/*": ["client/*"],
@@ -24,6 +24,11 @@
       "_hooks/*": ["client/hooks/*"],
       "_utils/*": ["client/utils/*"],
       "_types/*": ["client/types/*"]
+    }
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
     }
   },
   "include": ["client", "config", ".eslintrc.js"]

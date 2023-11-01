@@ -1,8 +1,8 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
-const config = require('./webpack.config');
+import config from './webpack.config';
 
 config.optimization = {
   minimize: true,
@@ -20,7 +20,7 @@ config.optimization = {
   ],
 };
 
-config.plugins.push(new BundleAnalyzerPlugin({
+config.plugins?.push(new BundleAnalyzerPlugin({
   analyzerMode: 'static',
 }));
 
@@ -29,6 +29,6 @@ const MiniCssExtractPluginConfig = new MiniCssExtractPlugin({
   chunkFilename: '[id].[fullhash].css',
 });
 
-config.plugins.push(MiniCssExtractPluginConfig);
+config.plugins?.push(MiniCssExtractPluginConfig);
 
-module.exports = config;
+export default config;

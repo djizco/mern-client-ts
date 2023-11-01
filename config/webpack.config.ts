@@ -1,10 +1,12 @@
-const path = require('path');
+import path from 'path';
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const webpack = require('webpack');
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import webpack, { Configuration } from 'webpack';
 
-const resolve = (dir) => path.join(__dirname, '../', dir);
+import 'webpack-dev-server';
+
+const resolve = (dir: string) => path.join(__dirname, '../', dir);
 
 const env = process.env.NODE_ENV || 'development';
 const apiURL = process.env.API_URL || '';
@@ -25,7 +27,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   inject: 'body',
 });
 
-module.exports = {
+const config: Configuration = {
   devServer: {
     static: {
       directory: resolve('dist'),
@@ -128,3 +130,5 @@ module.exports = {
     hints: false,
   },
 };
+
+export default config;

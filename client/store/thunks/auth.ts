@@ -1,4 +1,3 @@
-import { snakeToCamelCase } from 'json-style-converter/es5';
 import { Store as RNC } from 'react-notifications-component';
 import { push } from 'redux-first-history';
 
@@ -14,7 +13,7 @@ import type { User } from '_types/users';
 export const attemptLogin = (user: User) => (dispatch: TypedDispatch) =>
   postLogin(user)
     .then(data => {
-      dispatch(login(snakeToCamelCase(data.user)));
+      dispatch(login(data.user));
 
       RNC.addNotification({
         title: 'Success!',

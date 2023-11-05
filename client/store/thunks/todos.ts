@@ -1,6 +1,3 @@
-import { snakeToCamelCase } from 'json-style-converter/es5';
-import R from 'ramda';
-
 import { deleteTodo, getTodos, postTodo, putTodo, putToggleCompleteTodo } from '_api/todos';
 import { dispatchError } from '_api/utils';
 
@@ -12,10 +9,7 @@ import type { Todo } from '_types/todos';
 export const attemptGetTodos = () => (dispatch: TypedDispatch) =>
   getTodos()
     .then(data => {
-      const todos = R.map((todo: Todo) =>
-        R.omit(['Id'], R.assoc('id', todo._id, snakeToCamelCase(todo))), data.todos) as Todo[];
-
-      dispatch(setTodos(todos));
+      dispatch(setTodos(data.todos as Todo[]));
       return data.todos;
     })
     .catch(dispatchError(dispatch));
@@ -23,9 +17,7 @@ export const attemptGetTodos = () => (dispatch: TypedDispatch) =>
 export const attemptAddTodo = (text: string) => (dispatch: TypedDispatch) =>
   postTodo({ text })
     .then(data => {
-      const todo = R.omit(['Id'], R.assoc('id', data.todo._id, snakeToCamelCase(data.todo))) as Todo;
-
-      dispatch(addTodo(todo));
+      dispatch(addTodo(data.todo as Todo));
       return data.user;
     })
     .catch(dispatchError(dispatch));
@@ -41,7 +33,7 @@ export const attemptToggleCompleteTodo = (id: number) => (dispatch: TypedDispatc
 export const attemptUpdateTodo = (id: number, text: string) => (dispatch: TypedDispatch) =>
   putTodo({ id, text })
     .then(data => {
-      dispatch(updateTodo({ id, text, updatedAt: data.todo.updated_at }));
+      dispatch(updateTodo({ id, text, updatedAt: data.todo.updatedAt }));
       return data;
     })
     .catch(dispatchError(dispatch));
